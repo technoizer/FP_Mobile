@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:gravity="center_horizontal"
+    android:background="@drawable/bg"
+    tools:context="xyz.coders_note.masjidku.JadwalActivity">
+
+    <ProgressBar
+        android:id="@+id/pb"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textWait"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/pb"
+        android:textColor="#ffffff"
+        android:text="Mohon Menunggu!"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/title_cari"
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:text="MASJID TERDEKAT"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/logo_cari"
+        android:layout_below="@+id/title_cari"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:src="@drawable/masjid_ikon"
+        android:layout_height="150dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/content_cari"
+        android:layout_below="@+id/logo_cari"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_above="@+id/show_cari"
+        android:layout_height="fill_parent">
+
+        <TextView
+            android:id="@+id/deskripsi_masjid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            android:text="Saat ini anda sedang berada di dekat masjid :"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:id="@+id/nama_masjid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:text="AT TAQWA"/>
+        <TextView
+            android:id="@+id/jarak_masjid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:text="± 800 m"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/show_cari"
+        android:layout_above="@+id/other_cari"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Lihat di Peta"/>
+
+    <Button
+        android:id="@+id/other_cari"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Lihat Masjid Lain"/>
+</RelativeLayout>

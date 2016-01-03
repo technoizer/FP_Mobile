@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Masjid Kita</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_maps">Map</string>
+
+    <string-array name="wilayah">
+        <item>Surabaya</item>
+        <item>Bandung</item>
+        <item>Jakarta</item>
+        <item>Semarang</item>
+        <item>Medan</item>
+        <item>Bali</item>
+        <item>Pontianak</item>
+        <item>Aceh</item>
+        <item>Jayapura</item>
+        <item>Kupang</item>
+    </string-array>
+
+    <string-array name="coord_wilayah">
+        <item>-7.275614,112.6414725</item>
+        <item>-6.9034482,107.6080522</item>
+        <item>-6.2297419,106.7593061</item>
+        <item>-7.0172737,110.3781621</item>
+        <item>3.6422756,98.5290646</item>
+        <item>8.4553556,114.7906994</item>
+        <item>-0.0353948,109.2964451</item>
+        <item>4.0400884,95.5248861</item>
+        <item>-2.5651376,140.6459223</item>
+        <item>-10.1749491,123.579613</item>
+    </string-array>
+    <string name="title_activity_map_masjid">Map</string>
+</resources>

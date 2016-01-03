@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_cari"
+            android:icon="@android:drawable/ic_menu_search"
+            android:title="Cari Masjid" />
+        <item
+            android:id="@+id/nav_tambah"
+            android:icon="@android:drawable/ic_menu_add"
+            android:title="Tambahkan Masjid" />
+        <item
+            android:id="@+id/nav_jadwal"
+            android:icon="@android:drawable/ic_menu_agenda"
+            android:title="Jadwal Sholat" />
+        <item
+            android:id="@+id/nav_kompas"
+            android:icon="@android:drawable/ic_menu_compass"
+            android:title="Penunjuk Qiblat" />
+    </group>
+</menu>
