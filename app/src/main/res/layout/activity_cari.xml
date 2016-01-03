@@ -37,26 +37,27 @@
         android:textColor="#ffffff"
         android:layout_height="wrap_content" />
 
-    <ImageView
-        android:id="@+id/logo_cari"
-        android:layout_below="@+id/title_cari"
-        android:layout_marginTop="16dp"
-        android:layout_width="match_parent"
-        android:textAlignment="center"
-        android:src="@drawable/masjid_ikon"
-        android:layout_height="150dp" />
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:id="@+id/content_cari"
-        android:layout_below="@+id/logo_cari"
+        android:layout_below="@+id/title_cari"
         android:orientation="vertical"
         android:gravity="center"
         android:layout_above="@+id/show_cari"
         android:layout_height="fill_parent">
 
+        <ImageView
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            android:id="@+id/logo_cari"
+            android:layout_width="wrap_content"
+            android:textAlignment="center"
+            android:src="@drawable/masjid_ikon"
+            android:layout_height="200dp" />
+
         <TextView
+            android:layout_weight="1"
             android:id="@+id/deskripsi_masjid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -68,6 +69,7 @@
             android:layout_marginBottom="20dp"/>
 
         <TextView
+            android:layout_weight="1"
             android:id="@+id/nama_masjid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,6 +80,7 @@
             android:textSize="20dp"
             android:text="AT TAQWA"/>
         <TextView
+            android:layout_weight="1"
             android:id="@+id/jarak_masjid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

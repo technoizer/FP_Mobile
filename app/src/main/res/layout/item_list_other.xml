@@ -1,38 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="20dp"
-    android:orientation="horizontal">
-    <LinearLayout
+    android:layout_margin="20dp">
+    <ImageView
+        android:layout_margin="8dp"
+        android:id="@+id/logo_lain"
+        android:src="@drawable/masjid_ikon"
+        android:background="#cccccc"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+    <RelativeLayout
+        android:layout_margin="8dp"
+        android:layout_toRightOf="@+id/logo_lain"
         android:layout_width="match_parent"
-        android:layout_weight="11"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
         <TextView
             android:id="@+id/nama_other"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="test"
             android:textStyle="bold"
-            android:textSize="15dp" />
-
+            android:textSize="18dp" />
         <TextView
+            android:layout_below="@+id/nama_other"
             android:id="@+id/jarak_other"
-            android:layout_weight="5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textSize="12sp"
+            android:textSize="15sp"
             android:text="hehe"/>
-    </LinearLayout>
-
+    </RelativeLayout>
     <ImageButton
         android:id="@+id/view_map_other"
+        android:layout_below="@+id/logo_lain"
         android:onClick="showOtherMap"
-        android:layout_weight="1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@android:drawable/ic_dialog_map"/>
-</LinearLayout>
+</RelativeLayout>

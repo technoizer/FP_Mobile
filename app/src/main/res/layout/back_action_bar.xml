@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/backBtn"
+        android:layout_gravity="center_vertical"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:tint="#ffffff"
+        android:src="@android:drawable/ic_menu_revert"/>
+    <TextView
+        android:id="@+id/bar_title"
+        android:layout_toRightOf="@+id/backBtn"
+        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        style="@style/Base.TextAppearance.AppCompat.Title"
+        android:layout_marginLeft="16dp"
+        android:textSize="18sp"
+        android:text="Jadwal Sholat"
+        android:src="@android:drawable/ic_menu_revert"/>
+</RelativeLayout>

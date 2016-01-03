@@ -10,6 +10,15 @@ public class Masjid implements Serializable {
     private String name;
     private Double lat;
     private Double lng;
+    private String photo;
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
 
     public int getId() {
         return id;
@@ -44,6 +53,6 @@ public class Masjid implements Serializable {
     }
 
     public String toString (){
-        return getName() + " - " + getLat() + " - " + getLng();
+        return getName() + " - " + getLat() + " - " + getLng() + " - " + getPhoto();
     }
 }

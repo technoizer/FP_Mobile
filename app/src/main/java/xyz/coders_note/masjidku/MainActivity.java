@@ -76,9 +76,6 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_cari) {
             Intent i = new Intent(this,CariActivity.class);
             startActivity(i);
-        } else if (id == R.id.nav_tambah) {
-            Intent i = new Intent(this,TambahMasjidActivity.class);
-            startActivity(i);
         } else if (id == R.id.nav_jadwal) {
             Intent i = new Intent(this,JadwalActivity.class);
             startActivity(i);

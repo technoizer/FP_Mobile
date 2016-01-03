@@ -1,6 +1,7 @@
 package xyz.coders_note.masjidku;
 
 import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.content.Intent;
 import android.location.Location;
 import android.os.AsyncTask;
@@ -8,6 +9,7 @@ import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -42,7 +45,6 @@ public class CariActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cari);
         GPSTracker mGPS = new GPSTracker(this);
-
         if(mGPS.canGetLocation ){
             mGPS.getLocation();
             lat = mGPS.getLatitude();
@@ -69,7 +71,32 @@ public class CariActivity extends AppCompatActivity {
         showMap.setVisibility(View.GONE);
         otherMasjid.setVisibility(View.GONE);
 
-        new MyAsyncTask().execute("hehehe");
+        android.support.v7.app.ActionBar baru = getSupportActionBar();
+        LayoutInflater inflater = (LayoutInflater) getSupportActionBar().getThemedContext()
+                .getSystemService(LAYOUT_INFLATER_SERVICE);
+
+        final View customActionBarView = inflater.inflate(
+                R.layout.back_action_bar, null);
+
+        baru.setHomeButtonEnabled(true);
+        baru.setHomeButtonEnabled(true);
+        baru.setDisplayHomeAsUpEnabled(false);
+        baru.setDisplayShowTitleEnabled(false);
+        baru.setIcon(R.drawable.masjid_ikon);
+        baru.setCustomView(customActionBarView);
+        baru.setDisplayShowCustomEnabled(true);
+        ImageView back = (ImageView) customActionBarView.findViewById(R.id.backBtn);
+        TextView title = (TextView) customActionBarView.findViewById(R.id.bar_title);
+        title.setText("Pencarian Masjid");
+        back.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        new MyAsyncTask().execute(String.valueOf(lat),String.valueOf(lng));
     }
 
     private class MyAsyncTask extends AsyncTask<String, Integer, Double> {
@@ -77,7 +104,7 @@ public class CariActivity extends AppCompatActivity {
         @Override
         protected Double doInBackground(String... params) {
             // TODO Auto-generated method stub
-            postData(params[0]);
+            postData();
             return null;
         }
 
@@ -103,8 +130,12 @@ public class CariActivity extends AppCompatActivity {
                 double distance = locationA.distanceTo(locationB) ;
                 res.setText("Saat ini anda sedang berada di dekat masjid :");
                 nama_masjid.setText(masjids.get(0).getName().toUpperCase());
-                String jarakTxt = "± " + (distance > 1000 ?  (int)(distance/1000.0) + " km" : (int)distance + " m");
+                String jarakTxt = "± " + (distance > 1000 ?  (int) (distance/1000.0) + " km" : (int)distance + " m");
                 jarak.setText(jarakTxt);
+                if(masjids.get(0).getPhoto() != null)
+                    Picasso.with(getApplicationContext()).load(masjids.get(0).getPhoto()).into(logo);
+                else
+                    logo.setImageResource(R.drawable.masjid_ikon);
 
                 showMap.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -147,11 +178,11 @@ public class CariActivity extends AppCompatActivity {
         }
 
         @TargetApi(Build.VERSION_CODES.KITKAT)
-        public void postData(String valueIWantToSend) {
+        public void postData() {
             // Create a new HttpClient and Post Header
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httpGet = new HttpPost(
-                    "http://fpmobile.esy.es/api/getMosque");
+                    "http://fpmobile.esy.es/api/getMosque?"+"lat="+lat+"&lng="+lng);
             try {
                 HttpResponse response = httpclient.execute(httpGet);
                 Reader reader = new InputStreamReader(response.getEntity().getContent(), "UTF-8");

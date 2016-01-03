@@ -9,7 +9,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -44,6 +47,7 @@ public class ItemListAdaptorOther extends ArrayAdapter<Masjid> {
         holder.jarak_other = (TextView)row.findViewById(R.id.jarak_other);
         holder.showOnMap = (ImageButton) row.findViewById(R.id.view_map_other);
         holder.showOnMap.setTag(holder.masjid);
+        holder.photo = (ImageView)row.findViewById(R.id.logo_lain);
         row.setTag(holder);
         setupItem(holder);
         return row;
@@ -54,6 +58,10 @@ public class ItemListAdaptorOther extends ArrayAdapter<Masjid> {
         double jarak = getDistance(lat,lng,holder.masjid.getLat(),holder.masjid.getLng());
         String jarakTxt = "Jarak : ± " + (jarak > 1000 ?  (int)(jarak/1000.0) + " km" : (int)jarak + " m");
         holder.jarak_other.setText(jarakTxt);
+        if(holder.masjid.getPhoto() != null)
+            Picasso.with(getContext()).load(holder.masjid.getPhoto()).into(holder.photo);
+        else
+            holder.photo.setImageResource(R.drawable.masjid_ikon);
     }
 
     public static class PrayHolder{
@@ -61,6 +69,7 @@ public class ItemListAdaptorOther extends ArrayAdapter<Masjid> {
         TextView name_other;
         TextView jarak_other;
         ImageButton showOnMap;
+        ImageView photo;
     }
 
     public Double getDistance(Double latA, Double lngA, Double latB, Double lngB){

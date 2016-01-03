@@ -6,10 +6,10 @@
             android:id="@+id/nav_cari"
             android:icon="@android:drawable/ic_menu_search"
             android:title="Cari Masjid" />
-        <item
-            android:id="@+id/nav_tambah"
-            android:icon="@android:drawable/ic_menu_add"
-            android:title="Tambahkan Masjid" />
+        <!--<item-->
+            <!--android:id="@+id/nav_tambah"-->
+            <!--android:icon="@android:drawable/ic_menu_add"-->
+            <!--android:title="Tambahkan Masjid" />-->
         <item
             android:id="@+id/nav_jadwal"
             android:icon="@android:drawable/ic_menu_agenda"

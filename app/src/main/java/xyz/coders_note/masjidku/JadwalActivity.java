@@ -1,12 +1,16 @@
 package xyz.coders_note.masjidku;
 
+import android.app.ActionBar;
+import android.media.Image;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -29,9 +33,33 @@ public class JadwalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jadwal);
+        android.support.v7.app.ActionBar baru = getSupportActionBar();
+        LayoutInflater inflater = (LayoutInflater) getSupportActionBar().getThemedContext()
+                .getSystemService(LAYOUT_INFLATER_SERVICE);
+
+        final View customActionBarView = inflater.inflate(
+                R.layout.back_action_bar, null);
+
+        baru.setHomeButtonEnabled(true);
+        baru.setHomeButtonEnabled(true);
+        baru.setDisplayHomeAsUpEnabled(false);
+        baru.setDisplayShowTitleEnabled(false);
+        baru.setIcon(R.drawable.masjid_ikon);
+        baru.setCustomView(customActionBarView);
+        baru.setDisplayShowCustomEnabled(true);
+        ImageView back = (ImageView) customActionBarView.findViewById(R.id.backBtn);
+        TextView title = (TextView) customActionBarView.findViewById(R.id.bar_title);
+        title.setText("Jadwal Sholat");
+        back.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
 
         coor_wilayah = getResources().getStringArray(R.array.coord_wilayah);
-        //txtPrayerTimes = (TextView) findViewById(R.id.txtPrayerTimes);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.wilayah, R.layout.spinner_style);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         wilayahList = (Spinner)findViewById(R.id.wilayah);
@@ -44,7 +72,6 @@ public class JadwalActivity extends AppCompatActivity {
                 String[] parts = coordinate.split(",");
                 lat = Double.parseDouble(parts[0]);
                 lng = Double.parseDouble(parts[1]);
-                //Toast.makeText(getApplicationContext(),"ini posisi " + wilayahList.getSelectedItem().toString() + "\n" + lat + "\n" + lng,Toast.LENGTH_SHORT).show();
                 getTime();
 
             }
@@ -57,7 +84,6 @@ public class JadwalActivity extends AppCompatActivity {
     }
 
     public void getTime() {
-        // Retrive lat, lng using location API
         double latitude = lat;
         double longitude = lng;
         double timezone = (Calendar.getInstance().getTimeZone()
@@ -79,11 +105,6 @@ public class JadwalActivity extends AppCompatActivity {
         ArrayList prayerTimes = prayers.getPrayerTimes(cal, latitude,
                 longitude, timezone);
         ArrayList prayerNames = prayers.getTimeNames();
-//        String tmp = "";
-//        for (int i = 0; i < prayerTimes.size(); i++) {
-//            tmp += "\n" + prayerNames.get(i) + "\t - \t"+ prayerTimes.get(i);
-//        }
-
         List<Pray> list = new ArrayList<>();
 
         for (int i = 0; i < prayerTimes.size(); i++) {
@@ -94,9 +115,5 @@ public class JadwalActivity extends AppCompatActivity {
         adapter = new ItemListAdaptor(JadwalActivity.this,R.layout.item_list,list);
         listView = (ListView)findViewById(R.id.listView);
         listView.setAdapter(adapter);
-
-
-        //txtPrayerTimes.setText(tmp);
-
     }
 }
