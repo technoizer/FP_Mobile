@@ -57,6 +57,7 @@
             android:label="@string/title_activity_map_masjid" />
         <activity android:name=".OtherMasjidActivity" />
         <activity android:name=".TambahMasjidActivity" />
+        <activity android:name=".CompassActivity"></activity>
     </application>
 
 </manifest>

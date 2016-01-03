@@ -49,6 +49,10 @@ public class CariActivity extends AppCompatActivity {
             mGPS.getLocation();
             lat = mGPS.getLatitude();
             lng = mGPS.getLongitude();
+            if (lat == 0.0 && lng == 0.0){
+                Toast.makeText(this, "Unable To Determine Location!", Toast.LENGTH_SHORT).show();
+                finish();
+            }
         }else{
             Toast.makeText(this, "Unable To Determine Location!", Toast.LENGTH_SHORT).show();
             finish();
@@ -62,6 +66,7 @@ public class CariActivity extends AppCompatActivity {
         txtWait = (TextView) findViewById(R.id.textWait);
         otherMasjid = (Button) findViewById(R.id.other_cari);
         logo = (ImageView) findViewById(R.id.logo_cari);
+
         pb.setVisibility(View.VISIBLE);
         txtWait.setVisibility(View.VISIBLE);
         res.setVisibility(View.GONE);
@@ -127,7 +132,7 @@ public class CariActivity extends AppCompatActivity {
                 Location locationB = new Location("point B");
                 locationB.setLatitude(masjids.get(0).getLat());
                 locationB.setLongitude(masjids.get(0).getLng());
-                double distance = locationA.distanceTo(locationB) ;
+                double distance = locationA.distanceTo(locationB);
                 res.setText("Saat ini anda sedang berada di dekat masjid :");
                 nama_masjid.setText(masjids.get(0).getName().toUpperCase());
                 String jarakTxt = "± " + (distance > 1000 ?  (int) (distance/1000.0) + " km" : (int)distance + " m");
@@ -181,8 +186,9 @@ public class CariActivity extends AppCompatActivity {
         public void postData() {
             // Create a new HttpClient and Post Header
             HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httpGet = new HttpPost(
-                    "http://fpmobile.esy.es/api/getMosque?"+"lat="+lat+"&lng="+lng);
+            String url = "http://fpmobile.esy.es/api/getMosque?"+"lat="+lat+"&lng="+lng;
+            HttpPost httpGet = new HttpPost(url);
+            Log.d("URL",url);
             try {
                 HttpResponse response = httpclient.execute(httpGet);
                 Reader reader = new InputStreamReader(response.getEntity().getContent(), "UTF-8");

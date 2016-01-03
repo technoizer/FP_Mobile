@@ -80,7 +80,8 @@ public class MainActivity extends AppCompatActivity
             Intent i = new Intent(this,JadwalActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_kompas) {
-
+            Intent i = new Intent(this,CompassActivity.class);
+            startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
